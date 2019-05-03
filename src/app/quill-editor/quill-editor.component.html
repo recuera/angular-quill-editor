@@ -15,8 +15,6 @@
   </span>
   <span class="ql-formats">
     <select class="ql-header" value="1"></select>
-    <button class="ql-blockquote"></button>
-    <button class="ql-code-block"></button>
   </span>
   <span class="ql-formats">
     <button class="ql-list" value="ordered"></button>
@@ -32,10 +30,6 @@
     <button class="ql-link"></button>
     <button class="ql-image"></button>
     <button class="ql-video"></button>
-    <button class="ql-formula"></button>
-  </span>
-  <span class="ql-formats">
-    <button class="ql-clean"></button>
   </span>
   <span class="ql-formats">
     <button *ngFor="let customButton of customButtons" [ngClass]="customButton.type" (click)="insertVariable(customButton.type)">{{customButton.label}}</button>
