@@ -80,7 +80,7 @@ export class QuillEditorComponent implements OnInit {
 
   insertVariable(variableText: string) {
     const selection = this.quill.getSelection(true);
-    this.quill.insertText(selection.index, `{{ ${variableText} }}`);
+    this.quill.insertText(selection.index, ` ${variableText} `);
   }
 
   // These methods are required for the NgModel binding to work properly

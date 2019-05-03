@@ -50,7 +50,7 @@ export const DEFAULT_QUILL_TOOLBAR = [
 ];
 
 export const CUSTOM_VARIABLE_BUTTONS = [
-  { type: 'client_name', label: 'Client Name' },
-  { type: 'project_name', label: 'Project Name' },
-  { type: 'participant_name', label: 'Participant Name' },
+  { type: 'Jon Snow', label: 'Jon' },
+  { type: 'Daenerys Targaryen', label: 'Dany' },
+  { type: 'Cersei Lannister', label: 'Cersei' },
 ]
