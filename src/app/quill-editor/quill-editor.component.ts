@@ -25,6 +25,9 @@ export class QuillEditorComponent implements OnInit {
   editorElem: HTMLElement;
   quillContent = '';
 
+
+  @Input() name = 'quill-editor';
+  @Input() required = false;
   @Input() customButtons = CUSTOM_VARIABLE_BUTTONS;
 
   @Input() set ngModel (ngModel: string) {
@@ -70,7 +73,7 @@ export class QuillEditorComponent implements OnInit {
 
 
   emitQuillText() {
-    this.quillContent = this.quill.root.innerHTML;
+    this.quillContent = this.quill.root.innerHTML === '<p><br></p>' ? null : this.quill.root.innerHTML;
     this.ngModelChange.emit(this.quillContent);
   }
 
