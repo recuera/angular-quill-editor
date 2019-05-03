@@ -24,12 +24,8 @@ export class QuillEditorComponent implements OnInit {
 
   editorElem: HTMLElement;
   quillContent = '';
-  defaultModules = DEFAULT_QUILL_CONFIG;
 
-
-  @Input() options: Object;
   @Input() customButtons = CUSTOM_VARIABLE_BUTTONS;
-
 
   @Input() set ngModel (ngModel: string) {
     if (ngModel) {
