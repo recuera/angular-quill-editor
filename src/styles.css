@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: Helvetica, sans-serif
+}
+
+/* CUSTOM QUILL STYLES */
+
+.ql-toolbar.ql-snow,
+.ql-container.ql-snow  {
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #8fccce;
+}
+
+.ql-toolbar.ql-snow {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background: rgba(143, 204, 206, .2);
+}
+
+.ql-toolbar.ql-snow button {
+  white-space: nowrap;
+  width: auto;
+}
+
+.ql-container.ql-snow {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
