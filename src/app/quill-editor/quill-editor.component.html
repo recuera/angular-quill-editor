@@ -38,8 +38,7 @@
     <button class="ql-clean"></button>
   </span>
   <span class="ql-formats">
-    <button>CUSTOM</button>
-    <button *ngFor="let customButton of customButtons" [ngClass]="customButton.type" (click)="customButton.action()">{{customButton.label}}</button>
+    <button *ngFor="let customButton of customButtons" [ngClass]="customButton.type" (click)="insertVariable(customButton.type)">{{customButton.label}}</button>
   </span>
 </div>
 

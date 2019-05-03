@@ -32,7 +32,6 @@ export enum TOOLBAR_BUTTONS {
 }
 
 export const DEFAULT_QUILL_CONFIG = {
-
   toolbar: [
     TOOLBAR_OPTIONS.FONT_STYLES,
     TOOLBAR_OPTIONS.LIST_FORMATS,
@@ -49,3 +48,9 @@ export const DEFAULT_QUILL_TOOLBAR = [
   TOOLBAR_BUTTONS.ITALIC,
   TOOLBAR_BUTTONS.UNDERLINE
 ];
+
+export const CUSTOM_VARIABLE_BUTTONS = [
+  { type: 'client_name', label: 'Client Name' },
+  { type: 'project_name', label: 'Project Name' },
+  { type: 'participant_name', label: 'Participant Name' },
+]

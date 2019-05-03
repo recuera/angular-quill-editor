@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'quill-text-editor';
+
+  textContent = 'ARYA FOR PRESIDENT';
+
+  consoleText(text) {
+    console.log(text);
+  }
 }

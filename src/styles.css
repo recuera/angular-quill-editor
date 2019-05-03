@@ -2,6 +2,19 @@
   font-family: Helvetica, sans-serif
 }
 
+hr {
+  border: none;
+  margin: 60px 0 20px 0;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.quill-preview {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 5px 14px;
+  background: #fbfbfb;
+}
+
 /* CUSTOM QUILL STYLES */
 
 .ql-toolbar.ql-snow,
@@ -25,4 +38,7 @@
 .ql-container.ql-snow {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
+  min-height: 100px;
+  max-height: 300px;
+  overflow: auto;
 }

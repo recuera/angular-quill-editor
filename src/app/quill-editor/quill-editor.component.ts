@@ -1,26 +1,42 @@
-import { DEFAULT_QUILL_CONFIG } from './quillConfig';
-import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, Input } from '@angular/core';
+import { DEFAULT_QUILL_CONFIG, CUSTOM_VARIABLE_BUTTONS } from './quillConfig';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, FormGroup, FormBuilder } from '@angular/forms';
+
 import * as Quill from 'quill';
 
 @Component({
   selector: 'app-quill-editor',
   templateUrl: './quill-editor.component.html',
-  styleUrls: ['./quill-editor.component.css']
+  styleUrls: ['./quill-editor.component.css'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => QuillEditorComponent),
+    }
+  ]
 })
 export class QuillEditorComponent implements OnInit {
 
-  @Input() options: Object;
   quill: Quill;
   quillEditor: HTMLElement;
   quillToolbar: HTMLElement;
 
   editorElem: HTMLElement;
-  content: any;
+  quillContent = '';
   defaultModules = DEFAULT_QUILL_CONFIG;
 
-  customButtons = [
-    {type: 'client_name', label: 'Client Name', action: this.clientNameAction.bind(this)}
-  ];
+
+  @Input() options: Object;
+  @Input() customButtons = CUSTOM_VARIABLE_BUTTONS;
+
+
+  @Input() set ngModel (ngModel: string) {
+    if (ngModel) {
+      this.quillContent = ngModel;
+    }
+  }
+  @Output() ngModelChange: EventEmitter<string> = new EventEmitter();
 
   constructor(
     private elementRef: ElementRef
@@ -29,6 +45,7 @@ export class QuillEditorComponent implements OnInit {
   ngOnInit() {
     this.createQuillEditorElement();
     this.initQuillEditor();
+    this.setInitialContent();
   }
 
   createQuillEditorElement() {
@@ -45,17 +62,35 @@ export class QuillEditorComponent implements OnInit {
       readOnly: false,
       theme: 'snow',
       boundary: document.body
-    }, this.options || {}));
+    }, {}));
+
+    Quill.register(Quill.import('attributors/style/align'), true);
     this.quill.on('text-change', this.emitQuillText.bind(this));
   }
 
-  emitQuillText() {
-    console.log(this.quill.root.innerHTML);
+  setInitialContent() {
+    this.quill.root.innerHTML = this.quillContent;
   }
 
-  clientNameAction() {
+
+  emitQuillText() {
+    this.quillContent = this.quill.root.innerHTML;
+    this.ngModelChange.emit(this.quillContent);
+  }
+
+  insertVariable(variableText: string) {
     const selection = this.quill.getSelection(true);
-    this.quill.insertText(selection.index, '{{ client_name }}');
+    this.quill.insertText(selection.index, `{{ ${variableText} }}`);
+  }
+
+  // These methods are required for the NgModel binding to work properly
+  writeValue() {
+  }
+
+  registerOnChange() {
+  }
+
+  registerOnTouched() {
   }
 
 }

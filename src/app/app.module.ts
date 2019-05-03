@@ -1,3 +1,4 @@
+import { SafehtmlPipe } from './pipes/safe-html.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -7,7 +8,8 @@ import { QuillEditorComponent } from './quill-editor/quill-editor.component';
 @NgModule({
   declarations: [
     AppComponent,
-    QuillEditorComponent
+    QuillEditorComponent,
+    SafehtmlPipe
   ],
   imports: [
     BrowserModule
