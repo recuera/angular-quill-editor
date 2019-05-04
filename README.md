@@ -2,6 +2,8 @@
 
 This is an Angular example of the QuillJS Text Editor implemented as a component with ngModel two way binding and custom butons.
 
+Yoy can view a preview here: https://recuera.github.io/angular-quill-editor/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
 
 ## Development server
